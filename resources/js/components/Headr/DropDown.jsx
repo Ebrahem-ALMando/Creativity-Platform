@@ -20,7 +20,7 @@ const onUpdateActiveLink=()=>{
                     // Used React.Fragment "key" to Error:  Warning: Each child in a list should have a unique "key
                     return(
                         <React.Fragment key={index}>
-                            <Dropdown.Item  href="#/action-1">{item.itemname }</Dropdown.Item>
+                            <Dropdown.Item  href={`#${item.key}`}>{item.itemname }</Dropdown.Item>
                         </React.Fragment>
                     );})}
             </Dropdown.Menu>
@@ -29,9 +29,3 @@ const onUpdateActiveLink=()=>{
 }
 
 export default DropDown;
-
-{/*<Dropdown.Item href="#/action-1">اشراف على المشاريع</Dropdown.Item>*/}
-{/*<Dropdown.Item href="#/action-2">حلقات بحث</Dropdown.Item>*/}
-{/*<Dropdown.Item href="#/action-3">واجبات وتكليفات</Dropdown.Item>*/}
-{/*<Dropdown.Item href="#/action-3">مشاريع فصلية</Dropdown.Item>*/}
-{/*<Dropdown.Item href="#/action-3">تصاميم منوعة</Dropdown.Item>*/}

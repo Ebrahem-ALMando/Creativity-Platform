@@ -7,19 +7,38 @@ import navIcon1 from '/public/assets/img/nav-icon1.svg'
 import navIcon2 from '/public/assets/img/nav-icon2.svg'
 import navIcon3 from '/public/assets/img/nav-icon3.svg'
 import DropDown from "./DropDown";
-
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import {Hash} from "react-bootstrap-icons";
 
 const NavBar=() =>{
     const [classesDropdown,setClassesDropdown]=useState('');
     const [activeLink,setActiveLink]=useState('home')
     const [scrolled,setScrolled]=useState(false)
+
+    let viewMessage=true;
     useEffect(()=>{
+
     const onScroll=()=>{
+
         if(window.scrollY<50){
+
             setScrolled(false);
+            // setTimeout(()=>{
+            //
+            //
+            //     viewMessage=true;
+            // },2000)
+
         }
         else {
             setScrolled(true);
+        }
+        if(window.scrollY>=450 &&window.scrollY<=600&&viewMessage){
+            viewMessage=false;
+             toast.info("قم بالضغط على الاسهم لرؤية خدمات أكثر", {
+                position: toast.POSITION.BOTTOM_RIGHT}
+            )
         }
     }
     window.addEventListener("scroll",onScroll);
@@ -104,23 +123,4 @@ const NavBar=() =>{
         </Navbar>
     );
 }
-
 export default NavBar;
-{/*<Nav.Link href="#Frequently-Asked-Questions" className={activeLink==='Frequently-Asked-Questions'?'active navbar-link':'navbar-link'}*/}
-{/*          onClick={()=>{onUpdateActiveLink('Frequently-Asked-Questions')}}>الأسئلة الشائعة</Nav.Link>*/}
-// <Nav.Link href="#inquiries"  className={activeLink==='inquiries'?'active navbar-link':'navbar-link'}
-//           onClick={()=>{onUpdateActiveLink('inquiries')}}>الاستفسارات</Nav.Link>
-{/*<Nav.Link href="#Our-services" className={activeLink==='Our-services'?'active navbar-link':'navbar-link'}*/}
-{/*          onClick={()=>{onUpdateActiveLink('Our-services')}}>خدماتنا</Nav.Link>*/}
-
-{/*<NavDropdown title="Dropdown" id="basic-nav-dropdown">*/}
-{/*    <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>*/}
-{/*    <NavDropdown.Item href="#action/3.2">*/}
-{/*        Another action*/}
-{/*    </NavDropdown.Item>*/}
-{/*    <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>*/}
-{/*    <NavDropdown.Divider />*/}
-{/*    <NavDropdown.Item href="#action/3.4">*/}
-{/*        Separated link*/}
-{/*    </NavDropdown.Item>*/}
-{/*</NavDropdown>*/}
