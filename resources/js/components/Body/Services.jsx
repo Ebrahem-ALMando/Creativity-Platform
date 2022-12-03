@@ -7,6 +7,7 @@ import meter3 from '/public/assets/img/meter3.svg'
 import colorSharpL from '/public/assets/img/color-sharp.png'
 import colorSharpR from '/public/assets/img/color-sharp2.png'
 import React from 'react';
+import TrackVisibility from "react-on-screen";
 const  Services=()=>{
     const responsive = {
         superLargeDesktop: {
@@ -55,6 +56,9 @@ const  Services=()=>{
         <Container>
             <Row>
                 <Col>
+                    <TrackVisibility>
+                    {({ isVisible }) =>
+                        <div className={isVisible ?"animate__animated animate__slideInUp":""}>
                        <div className="service-bx" >
                             <h2>
                                 خدماتنا
@@ -76,6 +80,9 @@ const  Services=()=>{
                           })}
                       </Carousel>
                        </div>
+                        </div>}
+                    </TrackVisibility>
+
                 </Col>
             </Row>
 

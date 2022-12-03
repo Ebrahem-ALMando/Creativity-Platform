@@ -2,6 +2,7 @@ import {useState} from "react";
 import {Col, Container, Row} from "react-bootstrap";
 import  contactImage from '/public/assets/img/contact-img.svg'
 import {toast} from "react-toastify";
+import TrackVisibility from "react-on-screen";
 const Contact=()=>{
     const  formInitialDetails={
         firstName:'',
@@ -14,36 +15,11 @@ const Contact=()=>{
     const [buttonText,setButtonText]=useState('إرسال');
     const [status,setStatus]=useState({});
     const onFormUpdate=(typeInput,data)=>{
-
         serFormDetails({
             ...formDetails,
             [typeInput]:data
         });
-
-
     }
-    // const handlerSubmit=async (event)=>{
-    //     event.preventDefault();
-    //     setButtonText('يتم الإرسال . . . ')
-    //     let response=await fetch("http://127.0.0.1:8000/Contact",{
-    //         method:"Post",
-    //         headers:{
-    //             "Contact-Type":"Application/json;charset=utf-8"
-    //         },
-    //         body:JSON.stringify(formDetails),
-    //     })
-    //     setButtonText("إرسال") ;
-    //     let result =response.json();
-    //     serFormDetails(formInitialDetails);
-    //     if(result.code===200){
-    //         setStatus({success:true,message:"تم الإرسال بنجاح "});
-    //     }
-    //     else {
-    //         setStatus({success:false,message:"حذث خطأ في الإرسال .. يرجى التحقق من البيانات والمحاولة مجددا "});
-    //     }
-    //
-    // }
-
     const validate=()=>{
         if(formDetails.firstName===''||formDetails.lastName===''||
             formDetails.email===''||formDetails.phone===''||formDetails.message==='')
@@ -67,7 +43,6 @@ const Contact=()=>{
     }
     const handlerSubmit=async (event)=>{
         event.preventDefault();
-
         if(validate()){
             setButtonText('يتم الإرسال . . . ')
             await axios.post("/api/sending/message/data",{
@@ -86,25 +61,23 @@ const Contact=()=>{
                 }
             })
         }
-
-
-
-        // if(result.code===200){
-        //     setStatus({success:true,message:"تم الإرسال بنجاح "});
-        // }
-        // else {
-        //     setStatus({success:false,message:"حذث خطأ في الإرسال .. يرجى التحقق من البيانات والمحاولة مجددا "});
-        // }
-
     }
     return(
     <section className="contact" id="contact">
         <Container>
             <Row className="align-items-center">
                 <Col md={6}>
+                    <TrackVisibility>
+                        {({ isVisible }) =>
+                            <div className={isVisible ?"animate__animated animate__backInLeft":""}>
                     <img src={contactImage} alt="Contact"/>
+                            </div>}
+                    </TrackVisibility>
                 </Col>
                 <Col md={6}>
+                    <TrackVisibility>
+                        {({ isVisible }) =>
+                            <div className={isVisible ?"animate__animated animate__backInRight":""}>
                     <h2 dir="rtl">ابقى على تواصل</h2>
                     <form onSubmit={handlerSubmit}>
                         <Row>
@@ -124,7 +97,7 @@ const Contact=()=>{
                                 <input type="tel" value={formDetails.phone} placeholder="Phone"
                                        onChange={(event)=>onFormUpdate('phone',event.target.value)}/>
                             </Col>
-                           
+
                             <Col size={12} className="px-1"  >
                          <textarea  rows="6" value={formDetails.message} placeholder="Message . . . "
                                    onChange={(event)=>onFormUpdate('message',event.target.value)}>
@@ -132,13 +105,10 @@ const Contact=()=>{
                          </textarea>
                                 <button type="submit" ><span>{buttonText}</span></button>
                             </Col>
-
-                            {/*{*/}
-                            {/*    status.message&&*/}
-                            {/*  <p className={status.success===false?"danger":"success"}> {status.message}</p>*/}
-                            {/*}*/}
                         </Row>
                     </form>
+                            </div>}
+                    </TrackVisibility>
                 </Col>
             </Row>
 

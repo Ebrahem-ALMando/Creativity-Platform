@@ -622,6 +622,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   right: 0;
 }
 .new-email-bx input {
+  text-align: left;
   width: 100%;
   color: #121212;
   font-weight: 500;
@@ -630,8 +631,11 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   padding: 0 15px;
 }
 .new-email-bx button {
+
+    width: 30%;
+    align-items: center;
   background: linear-gradient(90.21deg, #AA367C -5.91%, #4A2FBD 111.58%);
-  padding: 20px 65px;
+  padding: 5% 17%;
   color: #fff;
   font-weight: 500;
   letter-spacing: 0.5px;
@@ -641,7 +645,8 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   width: 26%;
 }
 .footer p {
-  font-weight: 400;
+    font-family: 'Centra', sans-serif !important;
+  font-weight: 500;
   font-size: 14px;
   color: #B8B8B8;
   letter-spacing: 0.5px;

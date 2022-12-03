@@ -6,6 +6,7 @@ import Nav from 'react-bootstrap/Nav';
 import React from "react";
 import colorSharp2 from '/public/assets/img/color-sharp2.png'
 import CoursesCard from "./CoursesCard";
+import TrackVisibility from "react-on-screen";
 const Courses=()=>{
        const Courses = [
            {
@@ -43,12 +44,22 @@ const Courses=()=>{
         <section className="courses" id="courses">
             <Container>
                 <Row>
+
                     <Col>
+                        <TrackVisibility>
+                            {({ isVisible }) =>
+                                <div className={isVisible ?"animate__animated animate__backInRight":""}>
                         <h2>
                             الدورات التدريبية
                         </h2>
                         <p>منصة إبداع  هي منصة تعليمية تقوم على تقديم العديد من مسارات تطوير الويب بشرح تفصيلي تفاعلي باللغة العربية، وخطط دراسة مع اختبارات لضمان فهم الكود والتطبيق عليه.</p>
-                        <Tab.Container id="Courses-tabs"defaultActiveKey="first">
+                                </div>}
+                        </TrackVisibility>
+
+                                    <Tab.Container id="Courses-tabs"defaultActiveKey="first">
+                                        <TrackVisibility>
+                                            {({ isVisible }) =>
+                                                <div className={isVisible ?"animate__animated animate__backInLeft":""}>
                         <Nav variant="pills" defaultActiveKey="first" className="nav-pills mb-5 justify-content-center align-items-center"
                              id="pills-tab">
                             <Nav.Item>
@@ -63,7 +74,13 @@ const Courses=()=>{
                                 </Nav.Link>
                             </Nav.Item>
                         </Nav>
+                                </div>}
+                                </TrackVisibility>
+                                        <TrackVisibility>
+                                            {({ isVisible }) =>
+                                                <div className={isVisible ?"animate__animated animate__slideInUp":""}>
                             <Tab.Content>
+
                                 <Tab.Pane eventKey="first">
                                     <Row>
                                         {Courses.map((course,index)=>{
@@ -87,8 +104,12 @@ const Courses=()=>{
                                 </Tab.Pane>
 
                             </Tab.Content>
+                                                </div>}
+                                            </TrackVisibility>
                         </Tab.Container>
+
                     </Col>
+
                 </Row>
             </Container>
             <img src={colorSharp2} className="background-image-right"/>

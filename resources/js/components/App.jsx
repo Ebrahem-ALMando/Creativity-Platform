@@ -8,6 +8,8 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Courses from "./Body/Courses";
 import Contact from "./Body/Contact";
+import About from "./Footer/About";
+import Footer from "./Footer/Footer";
 const App =()=> {
     return (
         <div className="App">
@@ -17,6 +19,8 @@ const App =()=> {
             <Services/>
             <Courses/>
             <Contact/>
+            <Footer/>
+
         </div>
     );
 }
