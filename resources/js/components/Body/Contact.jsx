@@ -1,7 +1,7 @@
 import {useState} from "react";
 import {Col, Container, Row} from "react-bootstrap";
 import  contactImage from '/public/assets/img/contact-img.svg'
-
+import {toast} from "react-toastify";
 const Contact=()=>{
     const  formInitialDetails={
         firstName:'',
@@ -14,19 +14,89 @@ const Contact=()=>{
     const [buttonText,setButtonText]=useState('إرسال');
     const [status,setStatus]=useState({});
     const onFormUpdate=(typeInput,data)=>{
-        console.log(formDetails);
+
         serFormDetails({
             ...formDetails,
             [typeInput]:data
         });
-        console.log(formDetails);
+
 
     }
-    const handlerSubmit=(event)=>{
+    // const handlerSubmit=async (event)=>{
+    //     event.preventDefault();
+    //     setButtonText('يتم الإرسال . . . ')
+    //     let response=await fetch("http://127.0.0.1:8000/Contact",{
+    //         method:"Post",
+    //         headers:{
+    //             "Contact-Type":"Application/json;charset=utf-8"
+    //         },
+    //         body:JSON.stringify(formDetails),
+    //     })
+    //     setButtonText("إرسال") ;
+    //     let result =response.json();
+    //     serFormDetails(formInitialDetails);
+    //     if(result.code===200){
+    //         setStatus({success:true,message:"تم الإرسال بنجاح "});
+    //     }
+    //     else {
+    //         setStatus({success:false,message:"حذث خطأ في الإرسال .. يرجى التحقق من البيانات والمحاولة مجددا "});
+    //     }
+    //
+    // }
+
+    const validate=()=>{
+        if(formDetails.firstName===''||formDetails.lastName===''||
+            formDetails.email===''||formDetails.phone===''||formDetails.message==='')
+        {
+            toast.error("يرجى ملئ جميع البيانات")
+            return false;
+        }
+        else if(formDetails.email.includes('@')&&formDetails.email.includes('.')){
+          if(formDetails.message.length<30){
+              toast.error("الرسالة قصيرة جدا  ")
+              return false
+          }
+          else {
+              return true
+          }
+        }
+        else {
+            toast.error("يرجى التحقق من صيغة الإيميل ")
+            return false;
+        }
+    }
+    const handlerSubmit=async (event)=>{
         event.preventDefault();
-        console.log('Submit')
-    }
 
+        if(validate()){
+            setButtonText('يتم الإرسال . . . ')
+            await axios.post("/api/sending/message/data",{
+                firstName:formDetails.firstName,
+                lastName:formDetails.lastName,
+                email:formDetails.email,
+                phone:formDetails.phone,
+                message:formDetails.message,
+            }).then((response)=>{
+                if(response.status===200){
+                    setTimeout(()=>{
+                        toast.success("تم الإرسال بنجاح ");
+                        setButtonText("إرسال") ;
+                        serFormDetails(formInitialDetails);
+                    },2000)
+                }
+            })
+        }
+
+
+
+        // if(result.code===200){
+        //     setStatus({success:true,message:"تم الإرسال بنجاح "});
+        // }
+        // else {
+        //     setStatus({success:false,message:"حذث خطأ في الإرسال .. يرجى التحقق من البيانات والمحاولة مجددا "});
+        // }
+
+    }
     return(
     <section className="contact" id="contact">
         <Container>
@@ -54,17 +124,19 @@ const Contact=()=>{
                                 <input type="tel" value={formDetails.phone} placeholder="Phone"
                                        onChange={(event)=>onFormUpdate('phone',event.target.value)}/>
                             </Col>
-                            <Col  >
+                           
+                            <Col size={12} className="px-1"  >
                          <textarea  rows="6" value={formDetails.message} placeholder="Message . . . "
                                    onChange={(event)=>onFormUpdate('message',event.target.value)}>
 
                          </textarea>
                                 <button type="submit" ><span>{buttonText}</span></button>
                             </Col>
-                            {
-                                status.message&&
-                              <p className={status.success===false?"danger":"success"}> {status.message}</p>
-                            }
+
+                            {/*{*/}
+                            {/*    status.message&&*/}
+                            {/*  <p className={status.success===false?"danger":"success"}> {status.message}</p>*/}
+                            {/*}*/}
                         </Row>
                     </form>
                 </Col>
