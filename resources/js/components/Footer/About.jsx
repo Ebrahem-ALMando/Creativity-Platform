@@ -7,9 +7,16 @@ const About=()=>{
             <Container>
                 <Row>
                     <Col>
-                        <h3>
-                            معلومات
-                        </h3>
+
+                            <div className="box">
+                                <h1>معلومات</h1>
+                                <p>معلومات عنا </p>
+                                <p>اسئلة مكررة</p>
+                                <p>الانضمام لنا </p>
+                                <p>تواصل</p>
+
+                            </div>
+
                     </Col>
                 </Row>
             </Container>
