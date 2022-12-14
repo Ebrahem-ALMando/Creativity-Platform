@@ -641,10 +641,6 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   letter-spacing: 0.5px;
   border-radius: 18px;
 }
-.footer img {
-  width:10%;
-    display: inline;
-}
  .name-copy {
 
   font-weight: 500;
@@ -667,13 +663,11 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
     padding-bottom: 1%;
     background: linear-gradient(90.21deg, #2d1a25 -5.91%, #231a38 111.58%);
     border-radius: 50px;
-    margin-top: 1%;
+
 }
 /*------------------------------------------------
 
  */
-
-
 
 footer .footer {
     display: flex;
@@ -690,7 +684,7 @@ footer .footer .box {
 }
 
 footer .footer .box h1 {
-    font-size: 20px;
+    font-size: 24px;
     color: #FFFFFF;
     font-weight: bold;
     padding: 20px 0;
@@ -705,36 +699,12 @@ footer .footer .box p {
     font-size: 16px;
     transition: all .5s linear inherit;
 }
-
-
 footer .footer .box>a:hover {
-    text-decoration:dotted;
     max-width: 12rem;
     font-size:17px ;
     color: #FFFFFF;
     padding-left: 20px;
 }
-
-.credit {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-wrap: wrap;
-    border-top: 1px solid #bdbdbd;
-}
-
-.credit p {
-    padding: 10px;
-    font-size: 16px;
-    color: #4f4f4f;
-}
-
-/*.credit .icons>a>i {*/
-/*    color: #4f4f4f;*/
-/*    padding: 0 15px;*/
-/*    font-size: 20px;*/
-/*    cursor: pointer;*/
-/*}*/
 .footer img{
     width: 30%;
 }
