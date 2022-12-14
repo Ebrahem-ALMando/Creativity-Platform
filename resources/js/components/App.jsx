@@ -10,6 +10,7 @@ import Courses from "./Body/Courses";
 import Contact from "./Body/Contact";
 import About from "./Footer/About";
 import Footer from "./Footer/Footer";
+import Footernew from "./Footer/Footernew";
 const App =()=> {
     return (
         <div className="App">
@@ -19,8 +20,8 @@ const App =()=> {
             <Services/>
             <Courses/>
             <Contact/>
+            {/*<Footernew/>*/}
             <Footer/>
-
         </div>
     );
 }

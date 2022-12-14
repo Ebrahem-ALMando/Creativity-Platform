@@ -9,7 +9,8 @@ import navIcon3 from '/public/assets/img/nav-icon3.svg'
 import DropDown from "./DropDown";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import {Hash} from "react-bootstrap-icons";
+import {BrowserRouter} from "react-router-dom";
+import {HashLink} from "react-router-hash-link";
 
 const NavBar=() =>{
     const [classesDropdown,setClassesDropdown]=useState('');
@@ -71,7 +72,11 @@ const NavBar=() =>{
     const inquiries=[
         {
             key: 'i6',
-            itemname: 'الاسئلة الشائعة'
+            itemname: 'أرسل استفسارك'
+        },
+        {
+            key: 'i7',
+            itemname: 'الاسئلة الشائعة',
         }
     ]
     return (
@@ -92,7 +97,7 @@ const NavBar=() =>{
                                   onBlur={onBlurDropdown}
                                   onClick={onUpdateActiveLink}
                                   classes={activeLink==='Our-services'?classesDropdown:'navbar-link opacity-75 border-0'}/>
-                        <Nav.Link href="#training-courses" className={activeLink==='training-courses'?'active navbar-link':'navbar-link'}
+                        <Nav.Link href="#courses" className={activeLink==='training-courses'?'active navbar-link':'navbar-link'}
                                   onClick={()=>{onUpdateActiveLink('training-courses')}}> الدورات التدريبية</Nav.Link>
                         <DropDown title={'الاستفسارات'}
                                   Href={'inquiries'}
@@ -106,14 +111,21 @@ const NavBar=() =>{
                     </Nav>
                     <span className="navbar-text me-lg-5">
                         <div className="social-icon ">
-                            <a   href="#"><img src={navIcon1}alt=""/> </a>
-                            <a href="#"><img src={navIcon2}alt=""/> </a>
-                            <a href="#"><img src={navIcon3}alt=""/> </a>
+                                  <a href="https://www.linkedin.com/in/ebrahem-al-madno-932106241/"  target="_blank"><img src={navIcon1}alt=""/> </a>
+                            <a href="https://www.facebook.com/abo.mohamad.902604" target="_blank"><img src={navIcon2}alt=""/> </a>
+                            <a href="https://www.instagram.com/ibrahim_aladnan/" target="_blank"><img src={navIcon3}alt=""/> </a>
 
                         </div>
+
+                        <BrowserRouter>
+                        <HashLink to="#contact">
                         <button className="connect" onClick={()=>{console.log('Connection')}}>
                         <span> تواصل معنا</span>
                         </button>
+
+                        </HashLink>
+
+                    </BrowserRouter>
                     </span>
                 </Navbar.Collapse>
                 <Navbar.Brand href="#home" >
