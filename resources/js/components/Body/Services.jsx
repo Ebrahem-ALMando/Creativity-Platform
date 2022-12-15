@@ -4,6 +4,7 @@ import {Col, Row,Container} from "react-bootstrap";
 import meter1 from '/public/assets/img/meter1.svg'
 import meter2 from '/public/assets/img/meter2.svg'
 import meter3 from '/public/assets/img/meter3.svg'
+import prject2 from '/public/assets/img/project-img2.png'
 import colorSharpL from '/public/assets/img/color-sharp.png'
 import colorSharpR from '/public/assets/img/color-sharp2.png'
 import React from 'react';
@@ -36,7 +37,7 @@ const  Services=()=>{
         },
         {key:'i2',
             itemname:'حلقات بحث',
-            image:meter2
+            image:prject2
         },
         {key:'i3',
             itemname:'واجبات وتكليفات',

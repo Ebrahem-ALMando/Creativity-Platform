@@ -17,7 +17,7 @@
     @viteReactRefresh
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
-<body>
+<body id="Body">
 <div id="a1pp">
 
 {{--    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">--}}
