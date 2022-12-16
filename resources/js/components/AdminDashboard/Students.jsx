@@ -12,16 +12,16 @@ function Students() {
                 <Student>
                     <Info>
                         <Avatar>
-                            <img src={AvatarImage} alt="" />
+                            {/*<img src={AvatarImage} alt="" />*/}
                         </Avatar>
                         <TextContainer>
-                            <Title>Alexander Williams</Title>
-                            <SubTitle>ABC Holdings</SubTitle>
+                            {/*<Title>Alexander Williams</Title>*/}
+                            {/*<SubTitle>ABC Holdings</SubTitle>*/}
                         </TextContainer>
                     </Info>
                     <Container>
-                        <Badge content="Paid" paid />
-                        <Year>$ 1,200.87</Year>
+                        {/*<Badge content="Paid" paid />*/}
+                        {/*<Year>$ 1,200.87</Year>*/}
                     </Container>
                 </Student>
                 <Student>
@@ -30,8 +30,8 @@ function Students() {
                             <img src={AvatarImage2} alt="" />
                         </Avatar>
                         <TextContainer>
-                            <Title>John Philips</Title>
-                            <SubTitle>Inchor Associates</SubTitle>
+                            {/*<Title>John Philips</Title>*/}
+                            {/*<SubTitle>Inchor Associates</SubTitle>*/}
                         </TextContainer>
                     </Info>
                     <Container>

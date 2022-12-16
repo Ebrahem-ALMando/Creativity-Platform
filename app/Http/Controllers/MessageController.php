@@ -11,11 +11,17 @@ class MessageController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function index()
     {
-        //
+        try {
+            $message=Message::all()->count();
+            return response()->json($message);
+        }catch (\Exception $exception){
+            Log::error($exception);
+    }
+
     }
 
     /**

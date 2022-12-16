@@ -1,33 +1,64 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import styled from "styled-components";
 import Navbar from "./Navbar";
 import Info from "./Info";
 import ViewCardInfo from "./viewCardInfo";
-
 import HomePage from "./GohomePage";
-// import ProjectRecommendation from "./ProjectRecommendation";
 import Members from "./Members";
-import {themeColor, themeColor2} from "../../utils";
+import { themeColor2} from "../../utils";
 import Students from "./Students";
 
 function MainContent() {
+    const [countUsers,setCountUsers]=useState(0)
+    const [upUsers,setUpUsers]=useState([])
+    const [countMessage,setCountMessage]=useState(0)
+
+    const getCountMessage=()=>{
+        axios.get('/api/all/count/message').then((response)=>{
+            if(response.status===200){
+                setCountMessage(response.data);
+            }
+        })
+    }
+    const getCountUsers=()=>{
+        axios.get("/api/all/count/users").then((response)=>{
+            if(response.status===200){
+                setCountUsers(response.data)
+            }
+        })
+    }
+    const getTowUpUser=()=>{
+        axios.get("/api/all/tow/user").then((response)=>{
+            if(response.status===200){
+                setUpUsers(response.data)
+                console.log(response.data)
+            }
+        })
+    }
+    useEffect(()=>{
+        getTowUpUser();
+        getCountMessage();
+        getCountUsers()
+    },[])
+
     return (
         <Container>
             <Navbar />
             <SubContainer>
                 <SectionOne>
                     <ColumnOne1>
-                        <ViewCardInfo title={"المستخدمين"} count={70}
+                        <ViewCardInfo title={"المستخدمين"} count={countUsers||"0"}
                         time={"  منذ اخر شهر"}
                         increment={"10%"}
-                         bgcolor={"red"}
                         />
-                        <Info />
+                        <Info count={countMessage} />
 
                     </ColumnOne1>
                     <ColumnTwo1>
-                        <TitleText>فريق المنصة </TitleText>
-                        <Members />
+                        <TitleText>المضافين حديثا </TitleText>
+                        <Members
+                        datamembers={upUsers}
+                        />
                     </ColumnTwo1>
                 </SectionOne>
                 <SectionOne>

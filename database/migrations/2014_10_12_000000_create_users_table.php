@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('name');
             $table->boolean('isAdmin')->default(0);
             $table->boolean('isSupervisor')->default(0);;
-            $table->string('phone');
-            $table->string('country');
+            $table->string('phone')->default("00");
+            $table->string('country')->default("syria");
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

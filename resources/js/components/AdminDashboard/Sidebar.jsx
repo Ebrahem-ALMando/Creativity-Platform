@@ -1,5 +1,6 @@
-import React from "react";
+import React, {Provider, useState} from "react";
 import styled from "styled-components";
+import {BrowserRouter, Link} from "react-router-dom";
 import {
     RiHomeLine,
     RiFileCopyLine,
@@ -14,9 +15,13 @@ import Badge from "./Badge";
 import myphot from "/public/assets/myphto.jpg";
 import { darkThemeColor } from "../..//utils";
 function Sidebar() {
+    const [urlPanel,setUrlPanel]=useState('');
+    const setLocalStorage=(url)=>{
+        localStorage.removeItem('url');
+        localStorage.setItem("url",url)
+    }
     return (
-
-        <Container >
+        <Container className="Cn" >
             <ProfileContainer>
                  <Avatar src={myphot} />
                 <Name>إبراهيم المندو</Name>
@@ -24,50 +29,69 @@ function Sidebar() {
             </ProfileContainer>
             <LinksContainer>
                 <Links>
-                    <Link>
+                    <Linkurl>
                         <RiHomeLine />
-                        <h3>لوحة التحكم</h3>
-                    </Link>
-                    <Link>
+                        <Link id="lin" className="text-decoration-none link-light" to="/dashboard" >
+                        <h3 onClick={setLocalStorage("dashboard")}>لوحة التحكم</h3>
+                        </Link>
+                    </Linkurl>
+
+                    <Linkurl>
 
                         <RiMessengerFill/>
-                        <h3>الرسائل الواردة</h3>
-                    </Link>
-                    <Link>
+                        <Link id="lin" className="text-decoration-none link-light" to="/message" >
+
+                        <h3 onClick={setLocalStorage("message")}>الرسائل الواردة</h3>
+                        </Link>
+
+                    </Linkurl>
+
+                    <Linkurl>
                         <RiAccountCircleLine />
+                        <Link id="lin" className="text-decoration-none link-light" to="/users" >
                         <h3>المستخدمين</h3>
-                    </Link>
-                    <Link>
+                        </Link>
+                    </Linkurl>
+                    <Linkurl>
                         <RiUser3Fill />
+                        <Link id="lin" className="text-decoration-none link-light" to="/students" >
                         <h3>الطلاب</h3>
-                    </Link>
-                    <Link>
+                        </Link>
+                    </Linkurl>
+                    <Linkurl>
                         <FaWallet />
+                        <Link id="lin" className="text-decoration-none link-light" to="/services" >
                         <h3>الخدمات</h3>
-                    </Link>
-                    <Link>
+                        </Link>
+                    </Linkurl>
+                    <Linkurl>
 
                         <RiDatabaseFill />
+                        <Link id="lin" className="text-decoration-none link-light" to="/courses" >
                         <h3>الدورات التدريبية</h3>
-                    </Link>
-                    <Link>
-
+                        </Link>
+                    </Linkurl>
+                    <Linkurl>
                         <AiOutlinePieChart />
+                        <Link id="lin" className="text-decoration-none link-light" to="/dashboard" >
                         <h3>التقارير</h3>
-                    </Link>
+                        </Link>
+                    </Linkurl>
                 </Links>
                 <ContactContainer>
                     <span>التاريخ </span>
                     <a href="#">"2022" </a>
                 </ContactContainer>
             </LinksContainer>
+
         </Container>
+
 
     );
 }
 
 const Container = styled.div`
-    width: 25%;
+    min-width:300px;
     height: 100% !important;
     border-radius: 2rem;
     background-color: #091322;
@@ -76,9 +100,9 @@ const Container = styled.div`
     align-items: center;
     gap: 3rem;
      right:0,
-    @media screen and (min-width: 320px) and (max-width: 1080px) {
-        width: 100%;
+    @media screen and (min-width: 320px) and (max-width: 1080px)  {
         height: max-content !important;
+        width:100%;
     }
 `;
 
@@ -118,7 +142,7 @@ const Links = styled.ul`
     height: 60%;
 `;
 
-const Link = styled.li`
+const Linkurl = styled.li`
     margin-right: 15%;
     margin-bottom: 2rem;
     display: flex;
@@ -156,3 +180,4 @@ const ContactContainer = styled.div`
 `;
 
 export default Sidebar;
+

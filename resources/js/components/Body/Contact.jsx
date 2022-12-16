@@ -60,6 +60,7 @@ const Contact=()=>{
                     },2000)
                 }
             })
+
         }
     }
     return(

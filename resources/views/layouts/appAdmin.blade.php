@@ -24,6 +24,18 @@
     box-sizing: border-box;
     font-family: "Cairo", sans-serif;
     }
+   /*.Cn{*/
+   /*    width: 25%;*/
+
+   /*}*/
+   #lin{
+       opacity:0.75;
+   }
+    #lin:hover{
+        color: white;
+        opacity:1;
+    }
+
 </style>
 <body id="body" >
 <div  id="a1pp">

@@ -4,28 +4,24 @@ import member1 from "/public/assets/member1.jpg";
 import member2 from "/public/assets/member2.jpg";
 import { cardShadow, hoverEffect, themeColor } from "../../utils";
 
-function Members() {
+function Members(props) {
     return (
         <YourMembers>
+            {props.datamembers.map((member)=>{
+                return(
+                <React.Fragment>
             <Member>
                 <Avatar>
                     <img src={member1} alt="" />
                 </Avatar>
                 <Detail>
-                    <Title></Title>
-                    <SubTitle>1 day remaining</SubTitle>
+                 <Title>{member.name}</Title>
+                   <SubTitle>{member.email}</SubTitle>
                 </Detail>
             </Member>
-            <Member>
-                <Avatar>
-                    <img src={member2} alt="" />
-                </Avatar>
-                <Detail>
-                    <Title>Personal branding project</Title>
-                    <SubTitle>5 days remaining</SubTitle>
-                </Detail>
-            </Member>
-            <AllMembers>See all projects</AllMembers>
+                </React.Fragment>)
+            })}
+            <AllMembers>عرض جميع الاعضاء</AllMembers>
         </YourMembers>
     );
 }
@@ -64,9 +60,9 @@ const Detail = styled.div`
   margin-left: 1rem;
 `;
 const Title = styled.h3`
-  font-weight: 500;
+  font-weight: 400;
   @media screen and (min-width: 320px) and (max-width: 1080px) {
-    font-size: 1rem;
+    font-size: 10px;
   }
 `;
 const SubTitle = styled.h5`

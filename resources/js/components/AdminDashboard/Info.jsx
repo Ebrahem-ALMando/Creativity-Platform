@@ -2,13 +2,13 @@ import React from "react";
 import styled from "styled-components";
 import Badge from "./Badge";
 import { cardShadow, hoverEffect, themeColor } from "../../utils";
-function Info() {
+function Info(props) {
     return (
         <InfoCard>
             <Card>
                 <CardContent>
                     <Row>
-                        <Digit>98</Digit>
+                        <Digit>{props.count}</Digit>
                         <InfoContainer>
                             <Title>الرسائل</Title>
                             <SubTitle>هذا الشهر 20%</SubTitle>

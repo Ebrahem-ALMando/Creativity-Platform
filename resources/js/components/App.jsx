@@ -9,7 +9,6 @@ import Services from "./Body/Services";
 import Courses from "./Body/Courses";
 import Contact from "./Body/Contact";
 import Footer from "./Footer/Footer";
-
 const App =()=> {
     return (
         <div className="App">

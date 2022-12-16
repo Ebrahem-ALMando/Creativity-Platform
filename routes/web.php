@@ -22,6 +22,9 @@ Route::get('/home',function (){
 Route::get('/dashboard',function (){
     return view("AdminDashboard");
 });
+Route::get('/message',function (){
+    return view("AdminDashboard");
+});
 
 Route::get('/', function () {
     return view('welcome');
