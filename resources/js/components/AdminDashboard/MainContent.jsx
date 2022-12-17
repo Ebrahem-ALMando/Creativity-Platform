@@ -31,7 +31,6 @@ function MainContent() {
         axios.get("/api/all/tow/user").then((response)=>{
             if(response.status===200){
                 setUpUsers(response.data)
-                console.log(response.data)
             }
         })
     }

@@ -23,6 +23,7 @@
     padding: 0px;
     box-sizing: border-box;
     font-family: "Cairo", sans-serif;
+
     }
    /*.Cn{*/
    /*    width: 25%;*/
@@ -30,6 +31,11 @@
    /*}*/
    #lin{
        opacity:0.75;
+   }
+   #active-link{
+
+       font-weight: bold;
+       opacity: 1;
    }
     #lin:hover{
         color: white;

@@ -87,6 +87,7 @@ const Courses=()=>{
                                             return(
                                                 <CoursesCard
                                                 key={index}
+
                                                 {...course}
                                                 /> );})}
                                     </Row>

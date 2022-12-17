@@ -111,7 +111,7 @@ nav.navbar a.navbar-brand {
     width: 9%;
 }
 nav.navbar .navbar-nav .nav-link.navbar-link {
-    font-weight: 400;
+    font-weight: 600;
     color: #fff !important;
     letter-spacing: 0.8px;
     padding: 0 20px;
@@ -359,7 +359,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 .service-slider .item img {
     /*width: 100%;*/
-    width: 50%;
+    width: 75%;
     margin: 0 auto 15px auto;
 }
 /*-------------------------Hover Service-------------------------*/
@@ -368,12 +368,13 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
     background: linear-gradient(90.21deg, #aa367c -5.91%, #4a2fbd 111.58%);
     opacity: 0.85;
     position: absolute;
-    width: 50%;
+    width: 85%;
     height: 0;
     transition: 0.4s ease-in-out;
 }
 .service-slider .item:hover::before {
-    height: 100%;
+
+    height: 60%;
 }
 /*-------------------------Hover Service End-------------------------*/
 
@@ -666,14 +667,14 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
     margin-top: 10px;
     font-family: "Centra", sans-serif !important;
 }
-
-.Dropdown {
-    font-weight: 400;
+#dropdown-basic{
+    font-weight: 600;
     color: #fff !important;
     letter-spacing: 0.8px;
     padding: 5px 20px;
-    font-size: 18px;
+    font-size: 19px;
 }
+
 .copy {
     padding-top: 1%;
     padding-bottom: 1%;

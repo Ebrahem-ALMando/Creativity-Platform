@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import Badge from "./Badge";
-import AvatarImage from "/public/assets/avatarImage5.jpg";
-import AvatarImage2 from "/public/assets/avatarImage6.jpg";
+// import AvatarImage from "/public/assets/avatarImage5.jpg";
+// import AvatarImage2 from "/public/assets/avatarImage6.jpg";
 import { cardShadow, hoverEffect } from "../../utils";
 
 function Students() {
@@ -27,7 +27,7 @@ function Students() {
                 <Student>
                     <Info>
                         <Avatar>
-                            <img src={AvatarImage2} alt="" />
+                            {/*<img src={AvatarImage2} alt="" />*/}
                         </Avatar>
                         <TextContainer>
                             {/*<Title>John Philips</Title>*/}

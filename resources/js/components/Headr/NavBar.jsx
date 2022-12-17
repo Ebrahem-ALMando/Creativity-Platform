@@ -88,6 +88,10 @@ const NavBar=() =>{
                 </Navbar.Toggle>
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="" dir="rtl"  >
+                        {/*<Nav.Link href="#home"   className= "btn btn-light"*/}
+                        {/*          onClick={()=>{onUpdateActiveLink('home')}}>تسجيل الدخول</Nav.Link>*/}
+                        {/*<Nav.Link href="#home"   className= "btn btn-light"*/}
+                        {/*          onClick={()=>{onUpdateActiveLink('home')}}>انشاء حساب</Nav.Link>*/}
                         <Nav.Link href="#home"   className={`${activeLink==='home'?'active navbar-link':'navbar-link'} `}
                                   onClick={()=>{onUpdateActiveLink('home')}}>الرئيسية</Nav.Link>
                         <DropDown title={'خدماتنا'}

@@ -3,12 +3,18 @@ import "react-multi-carousel/lib/styles.css";
 import {Col, Row,Container} from "react-bootstrap";
 import meter1 from '/public/assets/img/meter1.svg'
 import meter2 from '/public/assets/img/meter2.svg'
+import propgramming from '/public/assets/img/propgramming.jfif'
+
 import meter3 from '/public/assets/img/meter3.svg'
 import prject2 from '/public/assets/img/project-img2.png'
 import colorSharpL from '/public/assets/img/color-sharp.png'
 import colorSharpR from '/public/assets/img/color-sharp2.png'
 import React from 'react';
 import TrackVisibility from "react-on-screen";
+import {useEffect, useState} from "react";
+import {HashLink} from "react-router-hash-link";
+import {BrowserRouter} from "react-router-dom";
+
 const  Services=()=>{
     const responsive = {
         superLargeDesktop: {
@@ -29,6 +35,16 @@ const  Services=()=>{
             items: 1
         }
     };
+    const [allService,setAllService]=useState([]);
+    const getAllMessage=()=>{
+        axios.get('api/get/all/services').then((response)=>{
+            console.log(response.data);
+            setAllService(response.data);
+        })
+    }
+    useEffect(()=>{
+        getAllMessage();
+    },[])
     const  Services=[
         {key:'i1',
             itemname:'اشراف على المشاريع',
@@ -67,14 +83,29 @@ const  Services=()=>{
                            <p>منصة إبداع  هي منصة تعليمية تقوم على تقديم العديد من مسارات تطوير الويب بشرح تفصيلي تفاعلي باللغة العربية، وخطط دراسة مع اختبارات لضمان فهم الكود والتطبيق عليه.</p>
                       <Carousel responsive={responsive} infinite={true} className="service-slider">
 
-                          {Services.map((service,index)=>{
+                          {allService.map((service,index)=>{
                               return(
                                   <React.Fragment key={index}>
-                                      <div className="item" id={service.key}>
-                                          <img src={service.image} alt="Image"/>
+                                      {/*<ServicesCard*/}
+                                      {/*    des={service.description}*/}
+                                      {/*    key={index}*/}
+
+                                      {/*/>*/}
+                                      <div className="item" id={service.id}>
+                                          <img src={propgramming} alt="Image"/>
                                           <h5>
-                                              {service.itemname}
+                                              {service.name}
                                           </h5>
+                                          <p>
+                                              {service.excerpt}
+                                          </p>
+                                          <BrowserRouter>
+                                            <HashLink to="#contact">
+                                          <button  className="btn btn-primary">
+                                              اطلب الان
+                                          </button>
+                                            </HashLink>
+                                          </BrowserRouter>
                                       </div>
                                   </React.Fragment>
                               )

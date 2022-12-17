@@ -3,45 +3,29 @@ import styled from "styled-components";
 import Sidebar from "./AdminDashboard/Sidebar";
 import MainContent from "./AdminDashboard/MainContent";
 import { Route,Routes} from "react-router-dom";
-import React, {useEffect} from "react";
-import Footer from "./Footer/Footer";
-
-
+import Users from "./AdminDashboard/users/users";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Message from "./AdminDashboard/Messages/Message";
+import Services from "./AdminDashboard/services/Services";
+import Courses from "./AdminDashboard/Courses/Courses";
+import Category_Courses from "./AdminDashboard/Category_courses/Category_Courses";
 const AppAdmin = () => {
-
-    // let urlnum=-1;
-    // useEffect(()=>{
-    //     const url=localStorage.getItem('url');
-    //     if(url==="dashboard"){
-    //         urlnum=true;
-    //     }
-    //     else {
-    //         urlnum=false
-    //     }
-    //     console.log(urlnum);
-    //     console.log(url);
-    //
-    // },[])
-
     return (
-        // <React.StrictMode>
+
         <Container dir="rtl">
             <Sidebar />
-            {/*<BrowserRouter>*/}
+                <ToastContainer/>
                 <Routes>
                     <Route  path="/dashboard" element={ <MainContent/>} />
-                    <Route  path="/message" element={<h1>Message</h1>} />
-                    <Route  path="/message" element={<h1>Message</h1>} />
-                    <Route  path="/message" element={<h1>Message</h1>} />
-                    <Route  path="/message" element={<h1>Message</h1>} />
-                    <Route  path="/message" element={<h1>Message</h1>} />
-                    <Route  path="/message" element={<h1>Message</h1>} />
-                {/*<Route path="/skills/:id/edit" element={<SkillEdit />} />*/}
+                    <Route  path="/message" element={<Message/>} />
+                    <Route  path="/users" element={<Users/>} />
+                    <Route  path="/students" element={<h1>students</h1>} />
+                    <Route  path="/services" element={<Services/>} />
+                    <Route  path="/category_courses" element={<Category_Courses/>} />
+                    <Route  path="/courses" element={<Courses/>} />
                 </Routes>
-            {/*</BrowserRouter>*/}
-            {/*{urlnum&&<MainContent/>}*/}
         </Container>
-        // </React.StrictMode>
     );
 };
 const Container = styled.div`

@@ -1,24 +1,24 @@
-import React, {Provider, useState} from "react";
 import styled from "styled-components";
-import {BrowserRouter, Link} from "react-router-dom";
+import { Link} from "react-router-dom";
 import {
     RiHomeLine,
-    RiFileCopyLine,
     RiDatabaseFill,
     RiMessengerFill,
     RiAccountCircleLine,
-    RiAccountCircleFill, RiUser2Line, RiUser2Fill, RiUser3Fill
+    RiUser3Fill
 } from "react-icons/ri";
 import { FaWallet } from "react-icons/fa";
 import { AiOutlinePieChart } from "react-icons/ai";
 import Badge from "./Badge";
 import myphot from "/public/assets/myphto.jpg";
-import { darkThemeColor } from "../..//utils";
+import { darkThemeColor } from "../../utils";
+import {useState} from "react";
+import {BiCategoryAlt} from "react-icons/all";
+
 function Sidebar() {
-    const [urlPanel,setUrlPanel]=useState('');
-    const setLocalStorage=(url)=>{
-        localStorage.removeItem('url');
-        localStorage.setItem("url",url)
+    const [activeLink,setActiveLink]=useState('dashboard')
+    const setActiveLinkUrl=(value)=>{
+        setActiveLink(value);
     }
     return (
         <Container className="Cn" >
@@ -31,50 +31,75 @@ function Sidebar() {
                 <Links>
                     <Linkurl>
                         <RiHomeLine />
-                        <Link id="lin" className="text-decoration-none link-light" to="/dashboard" >
-                        <h3 onClick={setLocalStorage("dashboard")}>لوحة التحكم</h3>
+                        <Link id={`${activeLink === "dashboard" ? "active-link" : "lin"}`}
+                              className="text-decoration-none link-light" to="/dashboard" >
+                        <h3
+                            onClick={()=>{setActiveLinkUrl("dashboard")}}
+                        >لوحة التحكم</h3>
                         </Link>
                     </Linkurl>
-
                     <Linkurl>
-
                         <RiMessengerFill/>
-                        <Link id="lin" className="text-decoration-none link-light" to="/message" >
+                        <Link id={`${activeLink === "message" ? "active-link" : "lin"}`}
+                              className="text-decoration-none link-light" to="/message" >
+                        <h3
+                            onClick={()=>{setActiveLinkUrl("message")}}
 
-                        <h3 onClick={setLocalStorage("message")}>الرسائل الواردة</h3>
+                        >الرسائل الواردة</h3>
                         </Link>
-
                     </Linkurl>
-
                     <Linkurl>
                         <RiAccountCircleLine />
-                        <Link id="lin" className="text-decoration-none link-light" to="/users" >
-                        <h3>المستخدمين</h3>
+                        <Link id={`${activeLink === "users" ? "active-link" : "lin"}`}
+                              className="text-decoration-none link-light" to="/users" >
+                        <h3
+                            onClick={()=>{setActiveLinkUrl("users")}}
+                        >المستخدمين</h3>
                         </Link>
                     </Linkurl>
                     <Linkurl>
                         <RiUser3Fill />
-                        <Link id="lin" className="text-decoration-none link-light" to="/students" >
-                        <h3>الطلاب</h3>
+                        <Link  id={`${activeLink === "students" ? "active-link" : "lin"}`}
+                              className="text-decoration-none link-light" to="/students" >
+                        <h3
+                            onClick={()=>{setActiveLinkUrl("students")}}
+                        >الطلاب</h3>
                         </Link>
                     </Linkurl>
                     <Linkurl>
                         <FaWallet />
-                        <Link id="lin" className="text-decoration-none link-light" to="/services" >
-                        <h3>الخدمات</h3>
+                        <Link id={`${activeLink === "services" ? "active-link" : "lin"}`}
+                              className="text-decoration-none link-light" to="/services" >
+                        <h3
+                            onClick={()=>{setActiveLinkUrl("services")}}
+                        >الخدمات</h3>
                         </Link>
                     </Linkurl>
                     <Linkurl>
-
+                       < BiCategoryAlt/>
+                        <Link id={`${activeLink === "category_courses" ? "active-link" : "lin"}`}
+                              className="text-decoration-none link-light" to="/category_courses" >
+                            <h3
+                                onClick={()=>{setActiveLinkUrl("category_courses")}}
+                            >اصناف الدورات</h3>
+                        </Link>
+                    </Linkurl>
+                    <Linkurl>
                         <RiDatabaseFill />
-                        <Link id="lin" className="text-decoration-none link-light" to="/courses" >
-                        <h3>الدورات التدريبية</h3>
+                        <Link id={`${activeLink === "courses" ? "active-link" : "lin"}`}
+                            className="text-decoration-none link-light" to="/courses" >
+                        <h3
+                            onClick={()=>{setActiveLinkUrl("courses")}}
+                        >الدورات التدريبية</h3>
                         </Link>
                     </Linkurl>
                     <Linkurl>
                         <AiOutlinePieChart />
-                        <Link id="lin" className="text-decoration-none link-light" to="/dashboard" >
-                        <h3>التقارير</h3>
+                        <Link id={`${activeLink === "repo" ? "active-link" : "lin"}`}
+                            className="text-decoration-none link-light" to="/dashboard" >
+                        <h3
+                            onClick={()=>{setActiveLinkUrl("repo")}}
+                        >التقارير</h3>
                         </Link>
                     </Linkurl>
                 </Links>

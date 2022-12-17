@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,15 +20,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/home',function (){
     return view("home");
 });
-Route::get('/dashboard',function (){
-    return view("AdminDashboard");
-});
-Route::get('/message',function (){
-    return view("AdminDashboard");
-});
+Route::get('/dashboard',[HomeController::class,'redirect']);
+Route::get('/message',[HomeController::class,'redirect']);
+Route::get('/users',[HomeController::class,'redirect']);
+Route::get('/students',[HomeController::class,'redirect']);
+Route::get('/services',[HomeController::class,'redirect']);
+Route::get('/category_courses',[HomeController::class,'redirect']);
+Route::get('/courses',[HomeController::class,'redirect']);
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Auth::routes();

@@ -7,9 +7,9 @@ import { cardShadow, hoverEffect, themeColor } from "../../utils";
 function Members(props) {
     return (
         <YourMembers>
-            {props.datamembers.map((member)=>{
+            {props.datamembers.map((member,index)=>{
                 return(
-                <React.Fragment>
+                <React.Fragment key={index}>
             <Member>
                 <Avatar>
                     <img src={member1} alt="" />

@@ -16,11 +16,21 @@ class MessageController extends Controller
     public function index()
     {
         try {
+            $messages=Message::orderby('id','desc')->get();
+            return response()->json($messages);
+        }catch (\Exception $exception){
+            Log::error($exception);
+    }
+
+    }
+    public function getCountMessage()
+    {
+        try {
             $message=Message::all()->count();
             return response()->json($message);
         }catch (\Exception $exception){
             Log::error($exception);
-    }
+        }
 
     }
 
@@ -77,14 +87,14 @@ class MessageController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Message  $message
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Message $message)
+
+    public function destroy(Request $request)
     {
-        //
+        try {
+            $message=Message::findOrFail($request->get('idMessage'));
+            $message->delete();
+        }catch (\Exception $exception){
+            Log::error($exception);
+        }
     }
 }
