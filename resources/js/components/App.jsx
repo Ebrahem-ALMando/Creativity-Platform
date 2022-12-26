@@ -1,24 +1,28 @@
-import React from 'react';
+import React, {useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '../../../public/App.css'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import NavBar from "./Headr/NavBar";
-import BannerHome from "./Body/BannerHome";
-import Services from "./Body/Services";
-import Courses from "./Body/Courses";
-import Contact from "./Body/Contact";
-import Footer from "./Footer/Footer";
+import {Route, Routes} from "react-router-dom";
+import Home from "./UserHome/Home/Home";
+import Enquiries from "./UserHome/Enquiries Page/Enquiries";
+import MyEnquiries from "./UserHome/Enquiries Page/MyEnquiries/MyEnquiries";
+import Login from "./Login Register/Login";
+
+
 const App =()=> {
+
     return (
         <div className="App">
-            <NavBar/>
             <ToastContainer/>
-            <BannerHome/>
-            <Services/>
-            <Courses/>
-            <Contact/>
-            <Footer/>
+            <Routes>
+                {/*<Route  path="/login/user" element={ <Login/>} />*/}
+                <Route  path="/" element={ <Home/>} />
+                <Route  path="/home" element={ <Home/>} />
+                <Route  path="/enquiry" element={<Enquiries/>} />
+                <Route  path="/myEnquiries" element={<MyEnquiries/>}/>
+            </Routes>
+
         </div>
     );
 }

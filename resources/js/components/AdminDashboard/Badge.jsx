@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { themeColor } from "../../utils";
 function Badge(props,{
     content,
-    clean = false,
+    clean = true,
     glow = false,
     paid = false,
     late = false,
@@ -19,9 +19,12 @@ const Div = styled.span`
     padding: 0.3rem 1rem;
     border-radius: 1rem;
     font-weight: 500;
-    color: white;
-    background-color: ${themeColor};
-    cursor: pointer;
+
+    &:hover{
+      color: white;
+     background-color: ${themeColor};
+    cursor: pointer;}
+
     ${({ clean }) =>
         clean &&
         `background-color: transparent;

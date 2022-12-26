@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 
-const UpdateModal = (props) => {
+const UpdateCategory = (props) => {
     const [nameData, setNameData] = useState([]);
     const [descriptionData, setDescriptionData] = useState([]);
 
@@ -148,4 +148,4 @@ const UpdateModal = (props) => {
         </div>
     );
 };
-export default UpdateModal;
+export default UpdateCategory;

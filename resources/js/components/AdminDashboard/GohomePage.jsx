@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { FaSlack } from "react-icons/fa";
 import { darkThemeColor, hoverEffect, themeColor } from "../../utils";
+import {Link} from "react-router-dom";
 function HomePage() {
     return (
         <JoinHome>
@@ -15,7 +16,10 @@ function HomePage() {
                         <SlackFoot> عرض الصفحة ك زائر</SlackFoot>
                     </SlackText>
                 </Slack>
+                <a href="/home"   className="text-decoration-none link-light">
+
                 <SlackJoin>ذهاب</SlackJoin>
+                </a>
             </CardContent>
         </JoinHome>
     );

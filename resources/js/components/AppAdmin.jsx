@@ -10,15 +10,18 @@ import Message from "./AdminDashboard/Messages/Message";
 import Services from "./AdminDashboard/services/Services";
 import Courses from "./AdminDashboard/Courses/Courses";
 import Category_Courses from "./AdminDashboard/Category_courses/Category_Courses";
+import Enquiries from "./AdminDashboard/Enquiries/Enquiries";
 const AppAdmin = () => {
     return (
 
         <Container dir="rtl">
+
             <Sidebar />
                 <ToastContainer/>
                 <Routes>
                     <Route  path="/dashboard" element={ <MainContent/>} />
                     <Route  path="/message" element={<Message/>} />
+                    <Route  path="/Enquiries" element={<Enquiries/>} />
                     <Route  path="/users" element={<Users/>} />
                     <Route  path="/students" element={<h1>students</h1>} />
                     <Route  path="/services" element={<Services/>} />

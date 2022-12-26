@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from "react";
 import TableRow from "./TableRow";
 import CreateModal from "../users/CreateModal";
+import {FiSearch} from "react-icons/fi";
+import styled from "styled-components";
 
 
 const  Table=(props)=>{
@@ -11,10 +13,11 @@ const  Table=(props)=>{
 
 
         <table className="table table-dark table-striped "
-               style={{maxWidth:'70%' ,marginTop:'5rem',marginRight:'3%',marginLeft:'5%'}}>
+               style={{maxWidth:'95%' ,marginTop:'3rem',marginRight:'2%',marginLeft:'3%'}}>
 
             <thead>
-            <CreateModal/>
+
+
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">{props.Col1}</th>
@@ -29,7 +32,9 @@ const  Table=(props)=>{
             <tbody >
 
 
-                {props.data.map((user,index)=>{
+                {
+                    // props.data==="لا بوجد بيانات متطابقة"?"":
+                    props.data.map((user,index)=>{
                     return (
                  <TableRow Data={user} key={index}/>
                         )
@@ -42,4 +47,5 @@ const  Table=(props)=>{
     )
 
 }
+
 export default Table;

@@ -9,15 +9,38 @@ import { themeColor2} from "../../utils";
 import Students from "./Students";
 
 function MainContent() {
-    const [countUsers,setCountUsers]=useState(0)
-    const [upUsers,setUpUsers]=useState([])
-    const [countMessage,setCountMessage]=useState(0)
+    const [countUsers,setCountUsers]=useState(0);
+    const [upUsers,setUpUsers]=useState([]);
+    const [countMessage,setCountMessage]=useState(0);
+    const [countCourses,setCountCourses]=useState(0)
+    const [countService,setCountService]=useState(0)
+    const [countEnquiries,setCountEnquiries]=useState([]);
+
+    const getCountCourses=()=>{
+        axios.get('/api/get/count/courses').then((response)=>{
+            if(response.status===200){
+                setCountCourses(response.data);
+            }
+        })
+    }
+    const getCountService=()=>{
+        axios.get('/api/get/count/service').then((response)=>{
+            if(response.status===200){
+                setCountService(response.data);
+            }
+        })
+    }
 
     const getCountMessage=()=>{
-        axios.get('/api/all/count/message').then((response)=>{
+        axios.get('/api/get/count/message').then((response)=>{
             if(response.status===200){
                 setCountMessage(response.data);
             }
+        })
+    }
+    const getCountEnquiries=()=>{
+        axios.get('api/get/all/count/enquiries').then((response)=>{
+            setCountEnquiries(response.data);
         })
     }
     const getCountUsers=()=>{
@@ -34,9 +57,13 @@ function MainContent() {
             }
         })
     }
+
     useEffect(()=>{
+        getCountService();
+        getCountCourses();
         getTowUpUser();
         getCountMessage();
+        getCountEnquiries()
         getCountUsers()
     },[])
 
@@ -50,7 +77,17 @@ function MainContent() {
                         time={"  منذ اخر شهر"}
                         increment={"10%"}
                         />
-                        <Info count={countMessage} />
+                        <Info
+                              countSectionTow={countEnquiries}
+                              titleSectionTow={'الاسفسارات'}
+                              timeSectionTow={"هذا الاسبوع 10%"}
+                              countSectionOne={countMessage}
+                              timeSectionOne={"هذا الشهر 20%"}
+                              titleSectionOne={"الرسائل"}
+                              badgeOne={"مشاريع"}
+                              badgeTow={"برمجيات"}
+                              url={"/Enquiries"}
+                        />
 
                     </ColumnOne1>
                     <ColumnTwo1>
@@ -67,7 +104,17 @@ function MainContent() {
                                       increment={"20%"}
                                       bgcolor={themeColor2}
                         />
-                        <Info />
+                        <Info
+                            countSectionTow={countCourses}
+                            timeSectionTow={"هذا الشهر 20%"}
+                            titleSectionTow={"الدورات "}
+                            countSectionOne={countService}
+                            timeSectionOne={"هذا الشهر 5%"}
+                            titleSectionOne={"الخدمات "}
+                            badgeOne={" ويب"}
+                            badgeTow={"برمجيات"}
+                            url={"/courses"}
+                            />
                     </ColumnOne1>
                     <ColumnTwo1>
                         <Students/>

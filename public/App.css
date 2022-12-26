@@ -9,6 +9,7 @@
     font-family: Centra;
     src: url("assets/font/CentraNo2-Medium.ttf");
     font-weight: 500;
+
 }
 @font-face {
     font-family: Centra;
@@ -18,6 +19,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Poppins:ital,wght@0,100;0,200;0,300;0,700;1,100;1,500;1,600;1,700&display=swap");
 /************ Default Css ************/
 * {
+
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -160,6 +162,11 @@ span.navbar-text {
     border-radius: 50%;
     transform: scale(0);
     transition: 0.3s ease-in-out;
+}
+.logo{
+
+    height:auto;
+;
 }
 .social-icon a:hover::before {
     transform: scale(1);

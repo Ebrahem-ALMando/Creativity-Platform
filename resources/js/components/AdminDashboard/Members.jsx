@@ -3,6 +3,7 @@ import styled from "styled-components";
 import member1 from "/public/assets/member1.jpg";
 import member2 from "/public/assets/member2.jpg";
 import { cardShadow, hoverEffect, themeColor } from "../../utils";
+import {Link} from "react-router-dom";
 
 function Members(props) {
     return (
@@ -21,7 +22,10 @@ function Members(props) {
             </Member>
                 </React.Fragment>)
             })}
+            <Link id="lin"
+                  className="text-decoration-none link-light" to="/users" >
             <AllMembers>عرض جميع الاعضاء</AllMembers>
+            </Link>
         </YourMembers>
     );
 }

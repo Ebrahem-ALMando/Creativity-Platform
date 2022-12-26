@@ -17,6 +17,14 @@ class ServiceController extends Controller
             Log::error($exception);
         }
     }
+    public function getCountService(){
+        try {
+            $service=Service::all()->count();
+            return response()->json($service);
+        }catch (\Exception $exception){
+            Log::error($exception);
+        }
+    }
 
     public function store(Request $request)
     {

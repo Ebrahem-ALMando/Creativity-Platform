@@ -13,7 +13,7 @@ import Badge from "./Badge";
 import myphot from "/public/assets/myphto.jpg";
 import { darkThemeColor } from "../../utils";
 import {useState} from "react";
-import {BiCategoryAlt} from "react-icons/all";
+import {BiCategoryAlt, SiGooglemessages} from "react-icons/all";
 
 function Sidebar() {
     const [activeLink,setActiveLink]=useState('dashboard')
@@ -46,6 +46,15 @@ function Sidebar() {
                             onClick={()=>{setActiveLinkUrl("message")}}
 
                         >الرسائل الواردة</h3>
+                        </Link>
+                    </Linkurl>
+                    <Linkurl>
+                        <SiGooglemessages/>
+                        <Link id={`${activeLink === "Enquiries" ? "active-link" : "lin"}`}
+                              className="text-decoration-none link-light" to="/Enquiries" >
+                            <h3
+                                onClick={()=>{setActiveLinkUrl("Enquiries")}}
+                            >الاستفسارات </h3>
                         </Link>
                     </Linkurl>
                     <Linkurl>

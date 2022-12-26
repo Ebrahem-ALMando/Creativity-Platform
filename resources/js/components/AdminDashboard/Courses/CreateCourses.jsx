@@ -22,6 +22,7 @@ class CreateCourses extends Component{
         });
     };
     inputCoursesCategory_Courses_Id=(event)=>{
+        // console.log(event.target.value);
         this.setState({
             category_courses_id: event.target.value,
         });
@@ -42,18 +43,22 @@ class CreateCourses extends Component{
         });
     };
     inputCoursesImage=(event)=>{
+        console.log(event.target.files[0]);
+            let data=new FormData()
+        data.append('file',event.target.files[0])
+        console.log("data",data)
         this.setState({
-            imageData: event.target.value,
+            imageData: event.target.files[0]
         });
     };
-
 
     SubmitHandler=(e)=>{
         e.preventDefault();
     }
 
     CreateCoursesData=()=>{
-
+        // const data = new FormData()
+        // data.append('images', this.state.imageData)
         //Submit Data
         axios.post('api/store/courses/data',{
             nameCoursesData: this.state.nameData,
@@ -66,7 +71,7 @@ class CreateCourses extends Component{
             toast.success("تم الانشاء بنجاح");
             console.log(response.data)
             setTimeout(()=>{
-                location.reload();
+                // location.reload();
             },2500)
         });
 
@@ -93,7 +98,7 @@ class CreateCourses extends Component{
                                 <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div className="modal-body text-black">
-                                <form action="api/store/service/data" method="post" className="form" onSubmit={this.SubmitHandler}  encType="multipart/form-data">
+                                <form  className="form" onSubmit={this.SubmitHandler} >
 
 
                                     <div className="row g-3 align-items-center" style={{maxWidth:'60%',marginBottom:'1rem'}}>
@@ -117,16 +122,20 @@ class CreateCourses extends Component{
                                             <select
                                                    className="form-select"
                                                    placeholder="Category Here"
-                                                   onChange={this.inputCoursesCategory_Courses_Id}>
-                                                <option>
-                                                    ويب
-                                                </option>
-                                                <option>
-                                                    برمجيات
-                                                </option>
-                                                <option>
-                                                    نظم تشغيل
-                                                </option>
+                                                   onChange={
+                                                       this.inputCoursesCategory_Courses_Id
+                                                   }
+                                                   >
+                                                <option>--- الصنف ---</option>
+                                                {this.props.categorys.map((category,index)=>{
+                                                    return(
+                                                        <option
+                                                            value={category.id}
+                                                            key={index} >
+                                                            {category.name}
+                                                        </option>
+                                                    )
+                                                })}
                                             </select>
                                         </div>
                                     </div>
@@ -173,6 +182,7 @@ class CreateCourses extends Component{
                                         </div>
                                         <div className="col-auto">
                                             <input type="file"
+
                                                    className="form-control"
                                                    onChange={this.inputCoursesImage}
                                             />
@@ -184,6 +194,7 @@ class CreateCourses extends Component{
                                                value="انشاء "
                                                data-bs-dismiss="modal"
                                                onClick={this.CreateCoursesData}/>
+
                                     </div>
                                 </form>
                             </div>

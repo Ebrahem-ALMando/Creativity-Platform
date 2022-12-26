@@ -2,16 +2,17 @@ import React from "react";
 import styled from "styled-components";
 import Badge from "./Badge";
 import { cardShadow, hoverEffect, themeColor } from "../../utils";
+import {Link} from "react-router-dom";
 function Info(props) {
     return (
         <InfoCard>
             <Card>
                 <CardContent>
                     <Row>
-                        <Digit>{props.count}</Digit>
+                        <Digit>{props.countSectionOne}</Digit>
                         <InfoContainer>
-                            <Title>الرسائل</Title>
-                            <SubTitle>هذا الشهر 20%</SubTitle>
+                            <Title>{props.titleSectionOne}</Title>
+                            <SubTitle>{props.timeSectionOne}</SubTitle>
                         </InfoContainer>
                     </Row>
                 </CardContent>
@@ -19,18 +20,25 @@ function Info(props) {
             <Card>
                 <CardContent>
                     <Row>
-                        <Digit>32</Digit>
+                        <Digit>{props.countSectionTow}</Digit>
                         <InfoContainer>
-                            <Title>الاستفسارات</Title>
-                            <SubTitle>هذا الاسبوع</SubTitle>
+                            <Title>{props.titleSectionTow}</Title>
+                            <SubTitle>{props.timeSectionTow}</SubTitle>
                         </InfoContainer>
                     </Row>
                     <Row justify>
-                        <Badge text="برمجيات" glow />
-                        <Badge text="مشاريع" glow />
+                        <Link to={props.url}   className="text-decoration-none link-light">
+                        <Badge text={props.badgeOne} glow />
+
+                        </Link>
+                        <Link to={props.url}   className="text-decoration-none link-light">
+
+                        <Badge text={props.badgeTow} glow />
+                        </Link>
                     </Row>
                 </CardContent>
             </Card>
+
         </InfoCard>
     );
 }

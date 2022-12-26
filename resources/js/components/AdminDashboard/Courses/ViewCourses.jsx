@@ -1,90 +1,38 @@
 import React from "react";
 import styled from "styled-components";
 import {hoverEffect, themeColor} from "../../../utils";
-import {AiFillEdit, BiShowAlt, MdDeleteForever} from "react-icons/all";
-import {toast} from "react-toastify";
 import imag from '/public/assets/img/meter2.svg'
-import axios from "axios";
+import ActionButtons from "./ActionButton";
 function ViewCourses(props) {
-    //
-    const deleteCourses=(id)=>{
-        axios.post('api/delete/service/data',{
-            idService:id,
-        }).then(()=>{
-            toast.error("تم الحذف بنجاح");
-            setTimeout(()=>{
-                location.reload();
-            },2500)
-        })
-    }
-
-    const getCoursesDetails=(id)=>{
-
-        axios.post('/api/get/individual/user/details',{
-            userId:id
-        }).then((response)=>{
-            //
-            // currentUserName:response.data.name,
-            // currentUserEmail:response.data.email,
-            // currentUserPhone:response.data.phone,
-            // currentUserCountry:response.data.country,
-        })
-        // console.log(this.state.currentEmployeeName );
-
-
-    }
-
-    // const viewMessage=(id)=>{
-    //     // axios.post('api/view/message/data',{
-    //     //     idMessage:id,
-    //     // }).then(()=>{
-    //     //     toast.error("تم المشاهدة بنجاح");
-    //     //     setTimeout(()=>{
-    //     //         location.reload();
-    //     //     },2500)
-    //     // })
-    //     toast.success("تم مشاهدتها سيتم اعلام المرسل");
-    // }
     return (
         <Card>
             <CardName>
-
                 {props.data.name}
             </CardName>
             <ColumnTwo1>
-
                 <CardContent>
+                    {/*<Category>*/}
+                    {/*    {props.data.category_courses_id}*/}
+                    {/*</Category>*/}
                     <Excerpt>
-
                         {props.data.excerpt}
-                        <IMG src={imag}/>
-                    </Excerpt>
 
+                            {/*<IMG src={imag}/>*/}
+
+                    </Excerpt>
+                    <URL href= {props.data.url}>
+                        {props.data.url}
+                    </URL>
                     <MessageContent>
                         {props.data.description}
                     </MessageContent>
-                    <Increase>
-                        <Button   style={{margin:'1%'}} type="button"
-                                  data-bs-toggle="modal" data-bs-target={"#UpdateModal"+ props.echRowID}
-                                  onClick={() => {
-                                      getCoursesDetails(props.echRowID)
-                                  }}
-
-                        >
-
-                            <AiFillEdit/>
-                        </Button>
-                        {/*<UpdateModal  modalID={props.echRowID}  Data={props.data}/>*/}
-
-                        <Button
-                            onClick={()=>{
-                                deleteCourses(props.data.id)
-                            }}
-                        >
-                            <MdDeleteForever/>
-                        </Button>
-
-                    </Increase>
+                    <Action>
+                        <ActionButtons
+                        Data={props.data}
+                        echRowID={props.data.id}
+                        categorys={props.category}
+                        />
+                    </Action>
                 </CardContent>
             </ColumnTwo1>
 
@@ -95,28 +43,8 @@ function ViewCourses(props) {
 
     );
 }
-const Button=styled.button`
-color:white;
-margin-left:1rem;
-opacity:0.75;
 
-&:hover{
-opacity:1;
-}
-`
-const SectionOne = styled.div`
-  display: block;
-  justify-content: space-between;
-  height: 40%;
-  gap: 2rem;
-  width: 90%;
-  flex-direction: column;
-  @media screen and (min-width: 320px) and (max-width: 1080px) {
-    flex-direction: column;
-    align-items: center;
-    height: max-content;
-  }
-`;
+
 const ColumnTwo1 = styled.div`
   display: flex;
   flex-direction: column;
@@ -167,7 +95,7 @@ const MessageContent = styled.p`
   text-align: right;
 `;
 
-const Increase = styled.h5`
+const Action = styled.h5`
   text-align: center;
   font-weight: normal;
   background-color: rgba(0, 0, 0, 0.2);
@@ -175,11 +103,10 @@ const Increase = styled.h5`
   border-radius: 2rem;
 `;
 const IMG=styled.img`
- display: flex;
-align-items:left
+text-align:right
 width:5rem;
- height: 5rem;
- margin-left:-10rem
+height: 5rem;
+
 `
 const Excerpt=styled.div`
  display: flex;
@@ -188,5 +115,29 @@ const Excerpt=styled.div`
     margin-bottom:1rem;
     opacity:0.8;
     font-size:15px;
+    &:hover{
+opacity:1;
+}
+`
+const URL=styled.a`
+opacity:0.75;
+color:#FFFF;
+text-decoration: none;
+margin-right:20rem;
+&:hover{
+opacity:1;
+color:#FFFF;
+}
+`
+const Category=styled.div`
+ display: flex;
+  text-align: right;
+    margin-left:1rem;
+    margin-bottom:1rem;
+    opacity:0.8;
+    font-size:17px;
+    &:hover{
+    opacity:1;
+}
 `
 export default ViewCourses;

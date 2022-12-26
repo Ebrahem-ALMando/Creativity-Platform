@@ -16,7 +16,9 @@
     <!-- Scripts -->
     @viteReactRefresh
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
 </head>
+
 <body id="Body">
 <div id="a1pp">
 
@@ -41,7 +43,7 @@
 {{--                    @guest--}}
 {{--                        @if (Route::has('login'))--}}
 {{--                            <li class="nav-item">--}}
-{{--                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>--}}
+{{--                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login Register') }}</a>--}}
 {{--                            </li>--}}
 {{--                        @endif--}}
 
@@ -64,7 +66,7 @@
 {{--                                </a>--}}
 
 {{--                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">--}}
-{{--                                    @csrf--}}
+
 {{--                                </form>--}}
 {{--                            </div>--}}
 {{--                        </li>--}}
@@ -77,6 +79,11 @@
     <main class="py-4">
         @yield('content')
     </main>
+
+{{--    <main class="py-4">--}}
+{{--        @yield('contents')--}}
+{{--    </main>--}}
+
 </div>
 </body>
 </html>

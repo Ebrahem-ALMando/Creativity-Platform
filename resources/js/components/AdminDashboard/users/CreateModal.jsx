@@ -3,6 +3,8 @@ import axios from "axios";
 import {toast} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import {AiOutlineUserAdd} from "react-icons/all";
+import styled from "styled-components";
+import {FiSearch} from "react-icons/fi";
 
 const CreateModal=props=>{
     const [nameData, setNameData] = useState([]);
@@ -62,11 +64,12 @@ const CreateModal=props=>{
     }
     return(
         <>
+
             <div className="row text-right w-100 mb-3 pb-3">
 
                 <button  type="button" className="btn btn-success text-right "
                         data-bs-toggle="modal" data-bs-target={"#modalCreate"}   >
-
+                              مستخدم جديد
                     <AiOutlineUserAdd/>
                 </button>
             </div>
@@ -169,4 +172,5 @@ const CreateModal=props=>{
         </>
     )
 }
+
 export default CreateModal;

@@ -6,24 +6,34 @@ import ViewCourses from "./ViewCourses";
 import CreateCourses from "./CreateCourses";
 const Courses=()=>{
     const [allCourses,setAllCourses]=useState([]);
-    const getAllMessage=()=>{
+    const getAllCourses=()=>{
         axios.get('api/get/all/courses').then((response)=>{
-            console.log(response.data);
             setAllCourses(response.data);
         })
     }
+    const [allCategory_Courses,setAllCategory_Courses]=useState([]);
+    const getAllCategory_Courses=()=>{
+        axios.get('api/get/all/category_courses').then((response)=>{
+            setAllCategory_Courses(response.data);
+        })
+    }
+
     useEffect(()=>{
-        getAllMessage();
+        getAllCategory_Courses();
+        getAllCourses();
     },[])
 
     return(
 
         <SectionOne>
-            <CreateCourses/>
+            <CreateCourses
+                categorys={allCategory_Courses}
+            />
             {allCourses.map((courses,index)=>{
                 return(
                     <ViewCourses key={index}
                                  data={courses}
+                                 category={allCategory_Courses}
                                  echRowID={courses.id}/>
                 )
             })}
